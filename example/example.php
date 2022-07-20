@@ -13,9 +13,17 @@ require_once __DIR__ . '/../src/Repository/Repository.php';
 require_once __DIR__ . '/../src/Repository/DestinationRepository.php';
 require_once __DIR__ . '/../src/Repository/QuoteRepository.php';
 require_once __DIR__ . '/../src/Repository/SiteRepository.php';
+require_once __DIR__ . '/../src/Service/MessageBuilder.php';
+require_once __DIR__ . '/../src/Service/MessageReplaceWorker/ReplaceWorkerInterface.php';
+require_once __DIR__ . '/../src/Service/MessageReplaceWorker/DestinationLinkReplaceWorker.php';
+require_once __DIR__ . '/../src/Service/MessageReplaceWorker/DestinationNameReplaceWorker.php';
+require_once __DIR__ . '/../src/Service/MessageReplaceWorker/QuoteSummaryReplaceWorker.php';
+require_once __DIR__ . '/../src/Service/MessageReplaceWorker/QuoteSummaryHtmlReplaceWorker.php';
+require_once __DIR__ . '/../src/Service/MessageReplaceWorker/UserNameReplaceWorker.php';
 require_once __DIR__ . '/../src/Service/QuoteRender/RenderInterface.php';
 require_once __DIR__ . '/../src/Service/QuoteRender/RenderHtml.php';
 require_once __DIR__ . '/../src/Service/QuoteRender/RenderText.php';
+require_once __DIR__ . '/../src/Exception/InvalidReplaceWorkerException.php';
 require_once __DIR__ . '/../src/TemplateManager.php';
 
 $faker = \Faker\Factory::create();

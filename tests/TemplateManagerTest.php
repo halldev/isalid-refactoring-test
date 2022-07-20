@@ -12,6 +12,13 @@ require_once __DIR__ . '/../src/Repository/DestinationRepository.php';
 require_once __DIR__ . '/../src/Repository/QuoteRepository.php';
 require_once __DIR__ . '/../src/Repository/SiteRepository.php';
 require_once __DIR__ . '/../src/TemplateManager.php';
+require_once __DIR__ . '/../src/Service/MessageBuilder.php';
+require_once __DIR__ . '/../src/Service/MessageReplaceWorker/ReplaceWorkerInterface.php';
+require_once __DIR__ . '/../src/Service/MessageReplaceWorker/DestinationLinkReplaceWorker.php';
+require_once __DIR__ . '/../src/Service/MessageReplaceWorker/DestinationNameReplaceWorker.php';
+require_once __DIR__ . '/../src/Service/MessageReplaceWorker/QuoteSummaryReplaceWorker.php';
+require_once __DIR__ . '/../src/Service/MessageReplaceWorker/QuoteSummaryHtmlReplaceWorker.php';
+require_once __DIR__ . '/../src/Service/MessageReplaceWorker/UserNameReplaceWorker.php';
 
 class TemplateManagerTest extends PHPUnit_Framework_TestCase
 {
