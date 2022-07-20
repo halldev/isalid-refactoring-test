@@ -13,6 +13,9 @@ require_once __DIR__ . '/../src/Repository/Repository.php';
 require_once __DIR__ . '/../src/Repository/DestinationRepository.php';
 require_once __DIR__ . '/../src/Repository/QuoteRepository.php';
 require_once __DIR__ . '/../src/Repository/SiteRepository.php';
+require_once __DIR__ . '/../src/Service/QuoteRender/RenderInterface.php';
+require_once __DIR__ . '/../src/Service/QuoteRender/RenderHtml.php';
+require_once __DIR__ . '/../src/Service/QuoteRender/RenderText.php';
 require_once __DIR__ . '/../src/TemplateManager.php';
 
 $faker = \Faker\Factory::create();

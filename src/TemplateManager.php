@@ -30,17 +30,24 @@ class TemplateManager
             $containsSummary = strpos($text, '[quote:summary]');
 
             if ($containsSummaryHtml !== false) {
+
+                $htmlView = (new RenderHtml($quoteFromRepository))
+                    ->render();
+
                 $text = str_replace(
                     '[quote:summary_html]',
-                    Quote::renderHtml($quoteFromRepository),
+                    $htmlView,
                     $text
                 );
             }
 
             if ($containsSummary !== false) {
+                $textView = (new RenderText($quote))
+                    ->render();
+
                 $text = str_replace(
                     '[quote:summary]',
-                    Quote::renderText($quoteFromRepository),
+                    $textView,
                     $text
                 );
             }
