@@ -11,6 +11,6 @@ class RenderText implements RenderInterface
 
     public function render(): string
     {
-        return (string) $this->quote->id;
+        return (string) $this->quote->getId();
     }
 }

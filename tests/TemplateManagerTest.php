@@ -63,15 +63,15 @@ L'équipe de Shipper
             ]
         );
 
-        $this->assertEquals('Votre livraison à ' . $expectedDestination->countryName, $message->subject);
+        $this->assertEquals('Votre livraison à ' . $expectedDestination->getCountryName(), $message->getSubject());
         $this->assertEquals("
-Bonjour " . $expectedUser->firstname . ",
+Bonjour " . $expectedUser->getFirstname() . ",
 
-Merci de nous avoir contacté pour votre livraison à " . $expectedDestination->countryName . ".
+Merci de nous avoir contacté pour votre livraison à " . $expectedDestination->getCountryName() . ".
 
 Bien cordialement,
 
 L'équipe de Shipper
-", $message->content);
+", $message->getContent());
     }
 }

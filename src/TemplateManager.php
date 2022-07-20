@@ -5,8 +5,12 @@ class TemplateManager
     public function getTemplateComputed(Template $tpl, array $data)
     {
         $replaced = clone($tpl);
-        $replaced->subject = $this->computeText($replaced->subject, $data);
-        $replaced->content = $this->computeText($replaced->content, $data);
+
+        $subject = $this->computeText($replaced->getSubject(), $data);
+        $replaced->setSubject($subject);
+
+        $content = $this->computeText($replaced->getContent(), $data);
+        $replaced->setContent($content);
 
         return $replaced;
     }
@@ -22,9 +26,9 @@ class TemplateManager
         $destinationOfQuote = null;
 
         if ($quote) {
-            $quoteFromRepository = QuoteRepository::getInstance()->getById($quote->id);
-            $siteOfQuote = SiteRepository::getInstance()->getById($quote->siteId);
-            $destinationOfQuote = DestinationRepository::getInstance()->getById($quote->destinationId);
+            $quoteFromRepository = QuoteRepository::getInstance()->getById($quote->getId());
+            $siteOfQuote = SiteRepository::getInstance()->getById($quote->getSiteId());
+            $destinationOfQuote = DestinationRepository::getInstance()->getById($quote->getDestinationId());
 
             $containsSummaryHtml = strpos($text, '[quote:summary_html]');
             $containsSummary = strpos($text, '[quote:summary]');
@@ -54,12 +58,12 @@ class TemplateManager
 
             $containsDestinationName = strpos($text, '[quote:destination_name]');
             if ($containsDestinationName !== false) {
-                $text = str_replace('[quote:destination_name]', $destinationOfQuote->countryName, $text);
+                $text = str_replace('[quote:destination_name]', $destinationOfQuote->getCountryName(), $text);
             }
         }
 
         $destinationLink = ($siteOfQuote && $destinationOfQuote && $quoteFromRepository)
-            ? sprintf('%s/%s/quote/%s', $siteOfQuote->url, $destinationOfQuote->countryName, $quoteFromRepository->id)
+            ? sprintf('%s/%s/quote/%s', $siteOfQuote->getUrl(), $destinationOfQuote->getCountryName(), $quoteFromRepository->getId())
             : '';
 
         $text = str_replace('[quote:destination_link]', $destinationLink, $text);
@@ -71,7 +75,7 @@ class TemplateManager
         $user = (isset($data['user']) and ($data['user'] instanceof User)) ? $data['user'] : $applicationContext->getCurrentUser();
         $containsFirstName = strpos($text, '[user:first_name]');
         if ($user && $containsFirstName !== false) {
-            $text = str_replace('[user:first_name]', ucfirst(mb_strtolower($user->firstname)), $text);
+            $text = str_replace('[user:first_name]', ucfirst(mb_strtolower($user->getFirstname())), $text);
         }
 
         return $text;

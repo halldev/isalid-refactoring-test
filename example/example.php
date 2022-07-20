@@ -41,4 +41,4 @@ $message = $templateManager->getTemplateComputed(
     ]
 );
 
-echo $message->subject . "\n" . $message->content;
+echo $message->getSubject() . "\n" . $message->getContent();

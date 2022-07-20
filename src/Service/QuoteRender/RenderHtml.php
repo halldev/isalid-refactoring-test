@@ -11,6 +11,6 @@ class RenderHtml implements RenderInterface
 
     public function render(): string
     {
-        return '<p>' . $this->quote->id . '</p>';
+        return '<p>' . $this->quote->getId() . '</p>';
     }
 }
