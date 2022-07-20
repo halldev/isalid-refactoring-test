@@ -20,7 +20,7 @@ require_once __DIR__ . '/../src/Service/MessageReplaceWorker/QuoteSummaryReplace
 require_once __DIR__ . '/../src/Service/MessageReplaceWorker/QuoteSummaryHtmlReplaceWorker.php';
 require_once __DIR__ . '/../src/Service/MessageReplaceWorker/UserNameReplaceWorker.php';
 
-class TemplateManagerTest extends PHPUnit_Framework_TestCase
+class TemplateManagerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Init the mocks
